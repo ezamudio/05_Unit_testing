@@ -2,12 +2,12 @@
 exports.__esModule = true;
 var chai_1 = require("chai");
 var metrics_1 = require("./metrics");
-var mongodb_1 = require("mongodb");
+var mongodb = require("mongodb");
 var dbMet;
 var db;
 var clientDb;
 var mongoAsync = function (callback) {
-    var MongoClient = mongodb_1["default"].MongoClient; // Create a new MongoClient
+    var MongoClient = mongodb.MongoClient; // Create a new MongoClient
     MongoClient.connect("mongodb://localhost:27017", { useNewUrlParser: true }, function (err, client) {
         if (err)
             throw err;
@@ -34,9 +34,7 @@ describe('Metrics', function () {
     });
     describe('/get', function () {
         it('should get empty array', function () {
-            var metrics = [
-                { timestamp: new Date().getTime().toString(), value: 11 },
-            ];
+            var metrics = new metrics_1.Metric('value', 11);
             dbMet.getA(metrics, function (err, result) {
                 chai_1.expect(err).to.be["null"];
                 chai_1.expect(result).to.not.be.undefined;
