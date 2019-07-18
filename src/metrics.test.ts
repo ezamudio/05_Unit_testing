@@ -1,6 +1,6 @@
 import { expect } from 'chai'
 import { Metric, MetricsHandler } from './metrics'
-import mongodb from 'mongodb'
+import mongodb = require('mongodb')
 
 var dbMet: MetricsHandler
 var db: any
@@ -39,9 +39,7 @@ describe('Metrics', () => {
 
 describe('/get', () =>  {
   it('should get empty array', function() {
-    const metrics: Metric[] = [
-      { timestamp: new Date().getTime().toString(), value: 11},
-    ]
+    const metrics = new Metric('value', 11)
     dbMet.getA(metrics, function(err: Error | null, result?: Metric[]) {
       expect(err).to.be.null
       expect(result).to.not.be.undefined
