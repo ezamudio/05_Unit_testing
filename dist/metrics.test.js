@@ -42,4 +42,24 @@ describe('Metrics', function () {
             });
         });
     });
+    describe('/save', function () {
+        it('should save an array', function () {
+            var metrics = new metrics_1.Metric(new Date().getTime().toString(), 11);
+            dbMet.save(metrics, function (err, result) {
+                chai_1.expect(err).to.be["null"];
+                chai_1.expect(result).to.not.be.undefined;
+                chai_1.expect(result).to.be.empty;
+            });
+        });
+    });
+    describe('/delete', function () {
+        it('should delete an array', function () {
+            var metrics = new metrics_1.Metric(new Date().getTime().toString(), 11);
+            dbMet.remove(metrics, function (err, result) {
+                chai_1.expect(err).to.be["null"];
+                chai_1.expect(result).to.not.be.undefined;
+                chai_1.expect(result).to.be.empty;
+            });
+        });
+    });
 });

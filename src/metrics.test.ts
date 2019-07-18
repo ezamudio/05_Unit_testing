@@ -47,4 +47,27 @@ describe('/get', () =>  {
     })
   })
 })
+
+describe('/save', () =>  {
+  it('should save an array', function() {
+    const metrics = new Metric(new Date().getTime().toString(), 11)
+    dbMet.save(metrics, function(err: Error | null, result?: Metric[]) {
+      expect(err).to.be.null
+      expect(result).to.not.be.undefined
+      expect(result).to.be.empty
+    })
+  })
+})
+
+describe('/delete', () =>  {
+  it('should delete an array', function() {
+    const metrics = new Metric(new Date().getTime().toString(), 11)
+    dbMet.remove(metrics, function(err: Error | null, result?: Metric[]) {
+      expect(err).to.be.null
+      expect(result).to.not.be.undefined
+      expect(result).to.be.empty
+    })
+  })
+})
+
 })
